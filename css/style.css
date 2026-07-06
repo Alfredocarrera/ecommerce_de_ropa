@@ -1,0 +1,77 @@
+
+
+
+
+
+.img_perfil {
+    width: 100px;           /*controlo el ancho de la imagen*/
+    height: 100px;          /*controlo el alto de la imagen*/   
+    border-radius: 50%;     /*controla lo redondeado de la imagen*/
+    object-fit: cover;      /*evita que se deforme la imagen*/
+}
+
+
+@media(max-width: 600px) {
+    .contenedor-perfil {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px;
+
+    }
+    .contenedor-botones {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    .contenedor-imagenes {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+    .contenedor-perfil {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px;
+    }
+    .contenedor-botones {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+    }
+    .contenedor-imagenes {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+    } 
+    
+}
+
+@media (min-width: 1024px) {
+    .contenedor-perfil {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px;
+    }
+    .contenedor-botones {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+    }
+    .contenedor-imagenes {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+    } 
+}
