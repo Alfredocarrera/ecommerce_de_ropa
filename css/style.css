@@ -1,4 +1,11 @@
-
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: bisque;
+}
 
 
 
@@ -8,6 +15,7 @@
     height: 100px;          /*controlo el alto de la imagen*/   
     border-radius: 50%;     /*controla lo redondeado de la imagen*/
     object-fit: cover;      /*evita que se deforme la imagen*/
+    display: block;
 }
 
 
@@ -26,10 +34,22 @@
         align-items: flex-start;
     }
     .contenedor-imagenes {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns:repeat(2, 1fr);
+        background-color: silver;
         gap: 10px;
         align-items: center;
+    }
+    .contenedor-imagenes div{
+        width: 40vw;
+        height:20vw;
+        border-radius: 10%;
+        object-fit: cover;
+        overflow: hidden;
+        padding: auto;
+    }
+    .contenedor-imagenes img{
+        width: 100%;
     }
 }
 
@@ -46,13 +66,25 @@
         gap: 10px;
         align-items: center;
     }
+ 
     .contenedor-imagenes {
-        display: flex;
-        flex-direction: row;
+        display: grid;
+        grid-template-columns:repeat(2, 1fr);
+        background-color: silver;
         gap: 10px;
         align-items: center;
-    } 
-    
+    }
+    .contenedor-imagenes div{
+        width: 40vw;
+        height:20vw;
+        border-radius: 10%;
+        object-fit: cover;
+        overflow: hidden;
+        padding: auto;
+    }
+    .contenedor-imagenes img{
+        width: 100%;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -68,10 +100,23 @@
         gap: 10px;
         align-items: center;
     }
-    .contenedor-imagenes {
-        display: flex;
-        flex-direction: row;
-        gap: 10px;
-        align-items: center;
-    } 
+    .contenedor-imagenes{
+    display: grid;
+    grid-template-columns:repeat(3, 1fr);
+    background-color: silver;
+    gap: 10px;
+    align-items: center;
+    }
+    .contenedor-imagenes div{
+    width: 40vw;
+    height:20vw;
+    border-radius: 10%;
+    object-fit: cover;
+    overflow: hidden;
+    padding: auto;
+    }
+    .contenedor-imagenes img{
+    width: 100%;
+    }
+
 }
