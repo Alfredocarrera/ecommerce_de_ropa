@@ -7,7 +7,11 @@ body{
     background-color: bisque;
 }
 
-
+.contenedor-perfil{
+    background-color: antiquewhite;
+    padding: 20px;
+    border-radius: 20%;
+}
 
 
 .img_perfil {
@@ -29,10 +33,27 @@ body{
     }
     .contenedor-botones {
         display: flex;
-        flex-direction: column;
+        flex-direction:row;
         gap: 10px;
         align-items: flex-start;
     }
+    .contenedor-botones button{
+        padding-inline-start: 60px;
+    }
+    .contenedor-botones button:hover{
+        color: gold;
+    }
+    /* Menu hamburguesa */
+    .contenedor-botones{
+        display: none;
+    }
+    
+    .contenedor-botones{
+        font-size: 32px;
+        cursor: pointer;
+        display: none;
+    }
+    
     .contenedor-imagenes {
         display: grid;
         grid-template-columns:repeat(2, 1fr);
@@ -42,7 +63,7 @@ body{
     }
     .contenedor-imagenes div{
         width: 40vw;
-        height:20vw;
+        height:60vw;
         border-radius: 10%;
         object-fit: cover;
         overflow: hidden;
@@ -51,6 +72,7 @@ body{
     .contenedor-imagenes img{
         width: 100%;
     }
+    
 }
 
 @media (min-width: 600px) and (max-width: 1024px) {
