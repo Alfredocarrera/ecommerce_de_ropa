@@ -233,57 +233,66 @@ body{
         color: #121111;
     }
     
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        z-index: 9999;
+        
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background-color: #333333;
+        color: #ffffff;
+        font-size: 22px;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+        /* Menú desplegable Horizontal ajustado a pantallas móviles */
     .barra-fija {
         position: fixed;
-        bottom: 0.5rem;           /* Queda pegada abajo. Cambia a top: 0 si la quieres arriba */
-        left: 10px;
-        width: 90%;         /* Ocupa todo el ancho de la pantalla */
-        height: 60px;
-        background-color: #292526;
-        color: #F2F2F2;
-        border-radius: 25px;
-  
-        /* Centrado de los elementos dentro de la barra */
-        display: flex;
+        top: auto;
+        bottom: 20px;               /* Alineado a la altura del botón */
+        left: 78px;                 /* Se posiciona a la derecha del botón (50px botón + espacios) */
+        right: 20px;                /* Limita el margen derecho para no salirse de pantalla */
+        width: auto;                /* Se adapta dinámicamente según el espacio libre */
+        max-width: calc(100% - 100px); /* Garantiza que no sobrepase la pantalla */
+        z-index: 9998;               /* Debajo del botón de menú */
+        display: none;              /* Oculto por defecto */
+        flex-direction: row;        /* Despliegue Horizontal */
         justify-content: space-around;
         align-items: center;
-  
-        /* Asegura que la barra siempre quede por encima del contenido que se desliza */
-        z-index: 1000;
         
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
-      }
+        padding: 6px 12px;
+        border-radius: 25px;        /* Bordes redondeados tipo cápsula */
+        background-color: #292526;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
 
-      .btn-barra {
-        background: transparent; /*fondo transparente para que se vea el color de la barra*/
+        /* Ajuste de íconos para pantalla móvil */
+    .btn-barra {
+        padding: 6px;
+        background: transparent;
         border: none;
-        padding: 8px ;
-        display: flex;
-        align-items: center;
-        justify-content: center; 
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color 0.3s ease, transform 0.3s ease;
-      }
+    }
 
-      /* 3. Tamaño y color de las imágenes SVG dentro de los botones */
     .btn-barra img {
-        width: 24px;              /* Tamaño adecuado para barra de navegación */
-        height: 24px;
-        object-fit: contain;
-        filter: invert(1);        /* Convierte los iconos de negro a blanco */
-        opacity: 0.8;             /* Opacidad leve por defecto */
-        transition: opacity 0.3s ease;
+        width: 20px;
+        height: 20px;
+        display: block;
+        filter: invert(1);
     }
 
-    /* 4. Efecto al pasar el cursor (Hover) */
-    .btn-barra:hover {
-        background-color: rgba(255, 255, 255, 0.15); /* Ligero brillo al pasar el cursor */
+        /* Muestra la barra en fila horizontal al presionar el botón */
+    .checkbox-menu:checked ~ .barra-fija {
+        display: flex;
     }
 
-    .btn-barra:hover img {
-        opacity: 1;              /* Se vuelve 100% visible */
-    }
 
     
 }
