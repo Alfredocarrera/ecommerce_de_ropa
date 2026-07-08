@@ -667,7 +667,7 @@ body{
          /* el botón de like se encuentra dentro de la tarjeta de imagen, para que al dar click en el corazón se pueda dar like a la prenda */
     .contenedor-imagenes {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 25px;
         padding: 20px;
     }
