@@ -5,19 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalle del Producto</title>
+    <link rel="stylesheet" href="../css/detail.css">
 </head>
 <body>
     <main> 
-        <section class="detalle-producto">
-            <div class="producto-imagen"> 
+        <section class="contenedor-imagenes">
+            <div class="tarjeta-imagen"> 
                 <img src="../storage/img/modelo_1.jpg" alt="modelo_1">
+                <input type="checkbox" id="like-1" class="check-like">  
+                <label for="like-1" class="btn-heart" aria-label="Me gusta">  </label>
             </div>
             <div class="producto-info">
                 <h2>Vestido 1</h2>
                 <p>Descripción del vestido 1.</p>
                 <button class="btn-leerMas">Read More..</button>
             </div>
-            <div class="botnnes-detalle">
+            <div class="botones-detalle">
                 <button class="btn-menos">
                     <img src="../storage/iconos/subtraction.svg"alt="" class="icono_btn">
                 </button>
