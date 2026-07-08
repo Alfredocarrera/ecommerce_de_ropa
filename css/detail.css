@@ -1,0 +1,150 @@
+.body{
+    background-color: #f2f2f2;
+}
+
+@media(max-width: 600px){
+  
+    /* Contenedor principal centrado en pantalla */
+    .contenedor-imagenes {
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 16px;
+        background-color: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /*TARJETA DE IMAGEN Y CORAZÓN */
+
+    .tarjeta-imagen {
+        position: relative; /* Marco para ubicar el corazón dentro */
+        width: 100%;
+        border-radius: 12px;
+        overflow: hidden; /* Mantiene esquinas redondeadas */
+    }
+
+    .tarjeta-imagen img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+    }
+
+    /* Ocultar el checkbox de forma transparente */
+    .check-like {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* Botón del corazón (Label) */
+    .btn-heart {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        z-index: 10;
+  
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.9);
+  
+        display: flex;
+        align-items: center;
+        justify-content: center;
+  
+        cursor: pointer;
+        transition: all 0.25s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Dibujamos el icono del corazón en CSS puro usando pseudo-elemento ::before */
+    .btn-heart::before {
+        content: "♥"; /* Símbolo de corazón */
+        font-size: 20px;
+        color: #888888; /* Color gris inicial */
+        transition: all 0.25s ease;
+    }
+
+    /* 1. HOVER: Al pasar el cursor encima */
+    .btn-heart:hover {
+        background-color: #222222; /* Fondo oscuro */
+        transform: scale(1.1);
+    }
+
+    .btn-heart:hover::before {
+        color: #ffffff; /* Corazón blanco */
+    }
+
+    /* 2. CHECKED: Cuando el usuario DA CLIC y activa el me gusta */
+    .check-like:checked + .btn-heart {
+        background-color: #222222; /* Se queda oscuro */
+    }
+
+    .check-like:checked + .btn-heart::before {
+        color: #ff4757; /* Corazón rojo (o pon #ffffff si prefieres blanco) */
+        transform: scale(1.15);
+    }
+
+
+    /*INFORMACIÓN Y BOTONES */
+
+    .producto-info {
+        text-align: center;
+        margin: 15px 0;
+        width: 100%;
+    }
+
+    .producto-info h2 {
+        margin: 0 0 8px 0;
+        font-size: 1.25rem;
+        color: #333333;
+    }
+
+    .producto-info p {
+        margin: 0 0 12px 0;
+        color: #666666;
+        font-size: 0.9rem;
+    }
+
+    .btn-leerMas {
+        background: transparent;
+        border: none;
+        color: #007bff;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    /* Barra de incremento (- 1 +) */
+    .botones-detalle {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background-color: #f5f5f5;
+        padding: 6px 12px;
+        border-radius: 20px;
+    }
+
+    .btn-menos, .btn-suma, .btn-valor {
+        background: transparent;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .icono_btn {
+        width: 16px;
+        height: 16px;
+    }
+
+    .valor {
+        font-weight: bold;
+        font-size: 1rem;
+        padding: 0 8px;
+    }
+}
