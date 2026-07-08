@@ -25,6 +25,7 @@ body{
         display: flex;
         align-items: center;
         gap: 20px;
+
     }
     .img_perfil {
         width: 100px;           /*controlo el ancho de la imagen*/
@@ -58,6 +59,15 @@ body{
     .contenedor-busqueda input::placeholder{
         color:#787672;
         opacity: 0.7;
+    }
+
+     /* Configuración del contenedor-botones  */
+    .contenedor-botones{
+        display: flex;
+        flex-direction: row;
+        justify-content:center;
+        gap: 20px;
+        align-items:center;
     }
     
      /* Configuración del botón */
@@ -113,7 +123,7 @@ body{
          /* el botón de like se encuentra dentro de la tarjeta de imagen, para que al dar click en el corazón se pueda dar like a la prenda */
     .contenedor-imagenes {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 25px;
         padding: 20px;
     }
@@ -279,69 +289,529 @@ body{
 }
 
 @media (min-width: 600px) and (max-width: 1024px) {
-    .contenedor-perfil {
+   
+     .contenedor-perfil {
         display: flex;
-        flex-wrap: wrap;
+        align-items: center;
         gap: 20px;
-        padding: 20px;
+        flex-direction: row;
+        justify-content: center;
+        
     }
-    .contenedor-botones {
+    .img_perfil {
+        width: 100px;           /*controlo el ancho de la imagen*/
+        height: 100px;          /*controlo el alto de la imagen*/   
+        border-radius: 50%;     /*controla lo redondeado de la imagen*/
+        object-fit: cover;      /*evita que se deforme la imagen*/
+        display: block;
+    }
+    
+    .contenedor-busqueda{
         display: flex;
         flex-direction: row;
-        gap: 10px;
-        align-items: center;
+        justify-content:center;
+        gap: 20px;
+        align-items:center;
     }
- 
+
+    .contenedor-busqueda button{
+        padding: 10px 30px;
+        border: 2px solid #292526;
+        background-color: #292526;
+        color: #F2F2F2;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+
+    .contenedor-busqueda input{
+        padding: 10px 20px;
+        font-size: 16px;
+        border: 2px solid #292526;
+        border-radius: 10px;
+        color: #121111;
+    }
+    .contenedor-busqueda input::placeholder{
+        color:#787672;
+        opacity: 0.7;
+    }
+     /* Configuración del contenedor-botones  */
+    .contenedor-botones{
+        display: flex;
+        flex-direction: row;
+        justify-content:center;
+        gap: 20px;
+        align-items:center;
+    }
+         /* Configuración del botón */
+    .btn-negro {
+        background-color: #121111;
+        color: #f2f2f2;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 18px;
+        margin: 4px;
+        /* Flexbox mantiene alineado el icono (img) y el texto (span) */
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: sans-serif;
+        font-size: 0.95rem;
+        cursor: pointer;
+    }
+
+        /* Control de tamaño para las imágenes de los iconos */
+    .icono-btn-negro {
+        width: 20px;   /* Ancho del icono */
+        height: 20px;  /* Alto del icono */
+        object-fit: contain; /* Evita que la imagen se deforme */
+        filter:invert(1) /*propiedad que combierte las imagenes oscura a blancas contrario al fondo que tengan*/
+    }
+        /*Configuracion de los botones blancos*/
+    .btn-blanco {
+        background-color: #f2f2f2;
+        color: #121111;
+        border: 2px solid #787676;
+        border-radius: 10px;
+        padding: 10px 18px;
+        margin: 4px;
+        /* Flexbox mantiene alineado el icono (img) y el texto (span) */
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: sans-serif;
+        font-size: 0.95rem;
+        cursor: pointer;
+    }
+
+        /* Control de tamaño para las imágenes de los iconos */
+    .icono-btn {
+        width: 20px;   /* Ancho del icono */
+        height: 20px;  /* Alto del icono */
+        object-fit: contain; /* Evita que la imagen se deforme */
+        filter:invert(0) /*propiedad que combierte las imagenes blancas a oscuras contrario al fondo que tengan*/
+    }
+
+
+         /* el botón de like se encuentra dentro de la tarjeta de imagen, para que al dar click en el corazón se pueda dar like a la prenda */
     .contenedor-imagenes {
         display: grid;
-        grid-template-columns:repeat(2, 1fr);
-        background-color: #F2F2F2;
-        gap: 10px;
-        align-items: center;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+        padding: 20px;
     }
-    .contenedor-imagenes div{
-        width: 40vw;
-        height:20vw;
-        border-radius: 10%;
-        object-fit: cover;
+
+    
+
+    /* 1. Contenedor relativo */
+    .tarjeta-imagen {
+        position: relative;
+        border-radius: 10px;
         overflow: hidden;
-        padding: auto;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-    .contenedor-imagenes img{
+
+    .tarjeta-imagen img {
         width: 100%;
+        height: 280px;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* 2. Ocultamos el checkbox real */
+    .check-like {
+        display: none;
+    }
+
+    /* 3. Estilo base del botón corazón (<label>) */
+    .btn-heart {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.3); /* Fondo oscuro semitransparente */
+        color: #ffffff;
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+  
+        /* Transparencia inicial */
+        opacity: 0.4;
+        transition: all 0.3s ease;
+        user-select: none;
+    }
+
+    /* Insertamos el corazón delineado por defecto */
+    .btn-heart::before {
+        content: "♡"; 
+    }
+
+    /* 4. HOVER: Transparencia completa al pasar el cursor */
+    .btn-heart:hover {
+        opacity: 1;
+        transform: scale(1.1);
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    /* 5. CLICK / CHECKED: Cuando el checkbox está seleccionado */
+    .check-like:checked + .btn-heart {
+        opacity: 1;
+        color: #121111; /* Color negro de "like" */
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Cambiamos el icono a corazón relleno cuando está en estado checked */
+    .check-like:checked + .btn-heart::before {
+        content: "♥";
+    }
+
+    /* 2. Área de Descripción y Precio */
+    .info-producto {
+        padding: 14px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .info-producto h3 {
+        font-family: sans-serif;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: #292526;
+        margin: 0;
+    }
+
+    .info-producto p {
+        font-family: sans-serif;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: #292526;
+        margin: 0;
+    }
+
+    .precio {
+        font-family: sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #121111;
+    }
+    
+    .barra-fija {
+        position: fixed;
+        bottom: 0.5rem;           /* Queda pegada abajo. Cambia a top: 0 si la quieres arriba */
+        left: 10px;
+        width: 90%;         /* Ocupa todo el ancho de la pantalla */
+        height: 60px;
+        background-color: #292526;
+        color: #F2F2F2;
+        border-radius: 25px;
+  
+        /* Centrado de los elementos dentro de la barra */
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+  
+        /* Asegura que la barra siempre quede por encima del contenido que se desliza */
+        z-index: 1000;
+        
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
+      }
+
+      .btn-barra {
+        background: transparent; /*fondo transparente para que se vea el color de la barra*/
+        border: none;
+        padding: 8px ;
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+
+      /* 3. Tamaño y color de las imágenes SVG dentro de los botones */
+    .btn-barra img {
+        width: 24px;              /* Tamaño adecuado para barra de navegación */
+        height: 24px;
+        object-fit: contain;
+        filter: invert(1);        /* Convierte los iconos de negro a blanco */
+        opacity: 0.8;             /* Opacidad leve por defecto */
+        transition: opacity 0.3s ease;
+    }
+
+    /* 4. Efecto al pasar el cursor (Hover) */
+    .btn-barra:hover {
+        background-color: rgba(255, 255, 255, 0.15); /* Ligero brillo al pasar el cursor */
+    }
+
+    .btn-barra:hover img {
+        opacity: 1;              /* Se vuelve 100% visible */
     }
 }
 
 @media (min-width: 1024px) {
-    .contenedor-perfil {
+   .contenedor-perfil {
         display: flex;
-        flex-wrap: wrap;
+        align-items: center;
         gap: 20px;
-        padding: 20px;
+        flex-direction: row;
+        justify-content: center;
+        
     }
-    .contenedor-botones {
+    .img_perfil {
+        width: 100px;           /*controlo el ancho de la imagen*/
+        height: 100px;          /*controlo el alto de la imagen*/   
+        border-radius: 50%;     /*controla lo redondeado de la imagen*/
+        object-fit: cover;      /*evita que se deforme la imagen*/
+        display: block;
+    }
+    
+    .contenedor-busqueda{
         display: flex;
         flex-direction: row;
-        gap: 10px;
+        justify-content:center;
+        gap: 20px;
+        align-items:center;
+    }
+
+    .contenedor-busqueda button{
+        padding: 10px 30px;
+        border: 2px solid #292526;
+        background-color: #292526;
+        color: #F2F2F2;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+
+    .contenedor-busqueda input{
+        padding: 10px 20px;
+        font-size: 16px;
+        border: 2px solid #292526;
+        border-radius: 10px;
+        color: #121111;
+    }
+    .contenedor-busqueda input::placeholder{
+        color:#787672;
+        opacity: 0.7;
+    }
+     /* Configuración del contenedor-botones  */
+    .contenedor-botones{
+        display: flex;
+        flex-direction: row;
+        justify-content:center;
+        gap: 20px;
+        align-items:center;
+    }
+         /* Configuración del botón */
+    .btn-negro {
+        background-color: #121111;
+        color: #f2f2f2;
+        border: none;
+        border-radius: 10px;
+        padding: 10px 18px;
+        margin: 4px;
+        /* Flexbox mantiene alineado el icono (img) y el texto (span) */
+        display: inline-flex;
         align-items: center;
+        gap: 8px;
+        font-family: sans-serif;
+        font-size: 0.95rem;
+        cursor: pointer;
     }
-    .contenedor-imagenes{
-    display: grid;
-    grid-template-columns:repeat(3, 1fr);
-    background-color: silver;
-    gap: 10px;
-    align-items: center;
+
+        /* Control de tamaño para las imágenes de los iconos */
+    .icono-btn-negro {
+        width: 20px;   /* Ancho del icono */
+        height: 20px;  /* Alto del icono */
+        object-fit: contain; /* Evita que la imagen se deforme */
+        filter:invert(1) /*propiedad que combierte las imagenes oscura a blancas contrario al fondo que tengan*/
     }
-    .contenedor-imagenes div{
-    width: 40vw;
-    height:20vw;
-    border-radius: 10%;
-    object-fit: cover;
-    overflow: hidden;
-    padding: auto;
+        /*Configuracion de los botones blancos*/
+    .btn-blanco {
+        background-color: #f2f2f2;
+        color: #121111;
+        border: 2px solid #787676;
+        border-radius: 10px;
+        padding: 10px 18px;
+        margin: 4px;
+        /* Flexbox mantiene alineado el icono (img) y el texto (span) */
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: sans-serif;
+        font-size: 0.95rem;
+        cursor: pointer;
     }
-    .contenedor-imagenes img{
-    width: 100%;
+
+        /* Control de tamaño para las imágenes de los iconos */
+    .icono-btn {
+        width: 20px;   /* Ancho del icono */
+        height: 20px;  /* Alto del icono */
+        object-fit: contain; /* Evita que la imagen se deforme */
+        filter:invert(0) /*propiedad que combierte las imagenes blancas a oscuras contrario al fondo que tengan*/
     }
+
+
+         /* el botón de like se encuentra dentro de la tarjeta de imagen, para que al dar click en el corazón se pueda dar like a la prenda */
+    .contenedor-imagenes {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+        padding: 20px;
+    }
+
+    
+
+    /* 1. Contenedor relativo */
+    .tarjeta-imagen {
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .tarjeta-imagen img {
+        width: 100%;
+        height: 480px;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* 2. Ocultamos el checkbox real */
+    .check-like {
+        display: none;
+    }
+
+    /* 3. Estilo base del botón corazón (<label>) */
+    .btn-heart {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.3); /* Fondo oscuro semitransparente */
+        color: #ffffff;
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+  
+        /* Transparencia inicial */
+        opacity: 0.4;
+        transition: all 0.3s ease;
+        user-select: none;
+    }
+
+    /* Insertamos el corazón delineado por defecto */
+    .btn-heart::before {
+        content: "♡"; 
+    }
+
+    /* 4. HOVER: Transparencia completa al pasar el cursor */
+    .btn-heart:hover {
+        opacity: 1;
+        transform: scale(1.1);
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    /* 5. CLICK / CHECKED: Cuando el checkbox está seleccionado */
+    .check-like:checked + .btn-heart {
+        opacity: 1;
+        color: #121111; /* Color negro de "like" */
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Cambiamos el icono a corazón relleno cuando está en estado checked */
+    .check-like:checked + .btn-heart::before {
+        content: "♥";
+    }
+
+    /* 2. Área de Descripción y Precio */
+    .info-producto {
+        padding: 14px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .info-producto h3 {
+        font-family: sans-serif;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: #292526;
+        margin: 0;
+    }
+
+    .info-producto p {
+        font-family: sans-serif;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: #292526;
+        margin: 0;
+    }
+
+    .precio {
+        font-family: sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #121111;
+    }
+    
+    .barra-fija {
+        position: fixed;
+        bottom: 0.5rem;           /* Queda pegada abajo. Cambia a top: 0 si la quieres arriba */
+        left: 10px;
+        width: 90%;         /* Ocupa todo el ancho de la pantalla */
+        height: 60px;
+        background-color: #292526;
+        color: #F2F2F2;
+        border-radius: 25px;
+  
+        /* Centrado de los elementos dentro de la barra */
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+  
+        /* Asegura que la barra siempre quede por encima del contenido que se desliza */
+        z-index: 1000;
+        
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
+      }
+
+      .btn-barra {
+        background: transparent; /*fondo transparente para que se vea el color de la barra*/
+        border: none;
+        padding: 8px ;
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+
+      /* 3. Tamaño y color de las imágenes SVG dentro de los botones */
+    .btn-barra img {
+        width: 24px;              /* Tamaño adecuado para barra de navegación */
+        height: 24px;
+        object-fit: contain;
+        filter: invert(1);        /* Convierte los iconos de negro a blanco */
+        opacity: 0.8;             /* Opacidad leve por defecto */
+        transition: opacity 0.3s ease;
+    }
+
+    /* 4. Efecto al pasar el cursor (Hover) */
+    .btn-barra:hover {
+        background-color: rgba(255, 255, 255, 0.15); /* Ligero brillo al pasar el cursor */
+    }
+
+    .btn-barra:hover img {
+        opacity: 1;              /* Se vuelve 100% visible */
+    }  
 
 }
