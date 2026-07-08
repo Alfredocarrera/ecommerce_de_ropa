@@ -37,8 +37,9 @@ body{
     .contenedor-busqueda{
         display: flex;
         flex-direction: row;
+        justify-content:center;
         gap: 20px;
-        align-items:flex-start;
+        align-items:center;
     }
     .contenedor-busqueda button{
         padding: 10px 30px;
@@ -57,25 +58,62 @@ body{
         color:#787672;
         opacity: 0.7;
     }
-    .contenedor-botones {
-        display: flex;
-        flex-direction:row;
-        gap: 20px;
-        align-items: flex-start;
-        border-collapse: separate;
-    }
-    .contenedor-botones button{
+    
+     /* Configuración del botón */
+    .btn-negro {
+        background-color: #121111;
+        color: #f2f2f2;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 18px;
+        margin: 4px;
+        /* Flexbox mantiene alineado el icono (img) y el texto (span) */
         display: inline-flex;
-        justify-content: center;
         align-items: center;
+        gap: 8px;
+        font-family: sans-serif;
+        font-size: 0.95rem;
+        cursor: pointer;
     }
-    .contenedor-botones button{
-        padding-inline-start: 60px;
+
+        /* Control de tamaño para las imágenes de los iconos */
+    .icono-btn {
+        width: 20px;   /* Ancho del icono */
+        height: 20px;  /* Alto del icono */
+        object-fit: contain; /* Evita que la imagen se deforme */
     }
-    .contenedor-botones button:hover{
-        color: gold;
+        /*Configuracion de los botones blancos*/
+    .btn-blanco {
+        background-color: #f2f2f2;
+        color: #121111;
+        border: 2px solid #787676;
+        border-radius: 6px;
+        padding: 10px 18px;
+        margin: 4px;
+        /* Flexbox mantiene alineado el icono (img) y el texto (span) */
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: sans-serif;
+        font-size: 0.95rem;
+        cursor: pointer;
     }
-     /* el botón de like se encuentra dentro de la tarjeta de imagen, para que al dar click en el corazón se pueda dar like a la prenda */
+
+        /* Control de tamaño para las imágenes de los iconos */
+    .icono-btn {
+        width: 20px;   /* Ancho del icono */
+        height: 20px;  /* Alto del icono */
+        object-fit: contain; /* Evita que la imagen se deforme */
+    }
+         /* el botón de like se encuentra dentro de la tarjeta de imagen, para que al dar click en el corazón se pueda dar like a la prenda */
+    .contenedor-imagenes {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+
+         /* el botón de like se encuentra dentro de la tarjeta de imagen, para que al dar click en el corazón se pueda dar like a la prenda */
     .contenedor-imagenes {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
