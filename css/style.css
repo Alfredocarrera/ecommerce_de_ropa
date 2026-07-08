@@ -46,6 +46,7 @@ body{
         border: 2px solid #292526;
         background-color: #292526;
         color: #F2F2F2;
+        cursor: pointer;
     }
     .contenedor-busqueda input{
         padding: 10px 20px;
@@ -77,10 +78,11 @@ body{
     }
 
         /* Control de tamaño para las imágenes de los iconos */
-    .icono-btn {
+    .icono-btn-negro {
         width: 20px;   /* Ancho del icono */
         height: 20px;  /* Alto del icono */
         object-fit: contain; /* Evita que la imagen se deforme */
+        filter:invert(1) /*propiedad que combierte las imagenes oscura a blancas contrario al fondo que tengan*/
     }
         /*Configuracion de los botones blancos*/
     .btn-blanco {
@@ -104,12 +106,15 @@ body{
         width: 20px;   /* Ancho del icono */
         height: 20px;  /* Alto del icono */
         object-fit: contain; /* Evita que la imagen se deforme */
+        filter:invert(0) /*propiedad que combierte las imagenes blancas a oscuras contrario al fondo que tengan*/
     }
+
+
          /* el botón de like se encuentra dentro de la tarjeta de imagen, para que al dar click en el corazón se pueda dar like a la prenda */
     .contenedor-imagenes {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-        gap: 20px;
+        gap: 25px;
         padding: 20px;
     }
 
@@ -186,6 +191,37 @@ body{
     .check-like:checked + .btn-heart::before {
         content: "♥";
     }
+
+    /* 2. Área de Descripción y Precio */
+    .info-producto {
+        padding: 14px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .info-producto h3 {
+        font-family: sans-serif;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: #292526;
+        margin: 0;
+    }
+
+    .info-producto p {
+        font-family: sans-serif;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: #292526;
+        margin: 0;
+    }
+
+    .precio {
+        font-family: sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #121111;
+    }
     
     .barra-fija {
         position: fixed;
@@ -209,14 +245,36 @@ body{
       }
 
       .btn-barra {
-        background: #3b82f6;
-        color: white;
+        background: transparent; /*fondo transparente para que se vea el color de la barra*/
         border: none;
-        padding: 10px 16px;
-        border-radius: 15px;
-        font-weight: bold;
+        padding: 8px ;
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+        border-radius: 8px;
         cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
       }
+
+      /* 3. Tamaño y color de las imágenes SVG dentro de los botones */
+    .btn-barra img {
+        width: 24px;              /* Tamaño adecuado para barra de navegación */
+        height: 24px;
+        object-fit: contain;
+        filter: invert(1);        /* Convierte los iconos de negro a blanco */
+        opacity: 0.8;             /* Opacidad leve por defecto */
+        transition: opacity 0.3s ease;
+    }
+
+    /* 4. Efecto al pasar el cursor (Hover) */
+    .btn-barra:hover {
+        background-color: rgba(255, 255, 255, 0.15); /* Ligero brillo al pasar el cursor */
+    }
+
+    .btn-barra:hover img {
+        opacity: 1;              /* Se vuelve 100% visible */
+    }
+
     
 }
 
