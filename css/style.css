@@ -3,39 +3,71 @@
     padding: 0;
     box-sizing: border-box;
 }
+html{
+    font-size: 16px;
+}
 body{
-    background-color: bisque;
+    background-color: #F2F2F2;
+    
 }
 
 .contenedor-perfil{
-    background-color: antiquewhite;
+    background-color: #F2F2F2;
     padding: 20px;
     border-radius: 20%;
 }
 
 
-.img_perfil {
-    width: 100px;           /*controlo el ancho de la imagen*/
-    height: 100px;          /*controlo el alto de la imagen*/   
-    border-radius: 50%;     /*controla lo redondeado de la imagen*/
-    object-fit: cover;      /*evita que se deforme la imagen*/
-    display: block;
-}
 
 
 @media(max-width: 600px) {
     .contenedor-perfil {
         display: flex;
-        flex-wrap: wrap;
+        align-items: center;
         gap: 20px;
-        padding: 20px;
-
+    }
+    .img_perfil {
+        width: 100px;           /*controlo el ancho de la imagen*/
+        height: 100px;          /*controlo el alto de la imagen*/   
+        border-radius: 50%;     /*controla lo redondeado de la imagen*/
+        object-fit: cover;      /*evita que se deforme la imagen*/
+        display: block;
+    }
+    
+    .contenedor-busqueda{
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        align-items:flex-start;
+    }
+    .contenedor-busqueda button{
+        padding: 10px 30px;
+        border: 2px solid #292526;
+        background-color: #292526;
+        color: #F2F2F2;
+    }
+    .contenedor-busqueda input{
+        padding: 10px 20px;
+        font-size: 16px;
+        border: 2px solid #292526;
+        border-radius: 10px;
+        color: #121111;
+    }
+    .contenedor-busqueda input::placeholder{
+        color:#787672;
+        opacity: 0.7;
     }
     .contenedor-botones {
         display: flex;
         flex-direction:row;
-        gap: 10px;
+        gap: 20px;
         align-items: flex-start;
+        border-collapse: separate;
+    }
+    .contenedor-botones button{
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
     }
     .contenedor-botones button{
         padding-inline-start: 60px;
@@ -43,28 +75,18 @@ body{
     .contenedor-botones button:hover{
         color: gold;
     }
-    /* Menu hamburguesa */
-    .contenedor-botones{
-        display: none;
-    }
-    
-    .contenedor-botones{
-        font-size: 32px;
-        cursor: pointer;
-        display: none;
-    }
     
     .contenedor-imagenes {
         display: grid;
         grid-template-columns:repeat(2, 1fr);
-        background-color: silver;
+        background-color: #F2F2F2;
         gap: 10px;
         align-items: center;
     }
     .contenedor-imagenes div{
         width: 40vw;
         height:60vw;
-        border-radius: 10%;
+        border-radius: 20%;
         object-fit: cover;
         overflow: hidden;
         padding: auto;
@@ -72,6 +94,36 @@ body{
     .contenedor-imagenes img{
         width: 100%;
     }
+    .barra-fija {
+        position: fixed;
+        bottom: 0.5rem;           /* Queda pegada abajo. Cambia a top: 0 si la quieres arriba */
+        left: 10px;
+        width: 90%;         /* Ocupa todo el ancho de la pantalla */
+        height: 60px;
+        background-color: #292526;
+        color: #F2F2F2;
+        border-radius: 25px;
+  
+        /* Centrado de los elementos dentro de la barra */
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+  
+        /* Asegura que la barra siempre quede por encima del contenido que se desliza */
+        z-index: 1000;
+        
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
+      }
+
+      .btn-barra {
+        background: #3b82f6;
+        color: white;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 15px;
+        font-weight: bold;
+        cursor: pointer;
+      }
     
 }
 
@@ -92,7 +144,7 @@ body{
     .contenedor-imagenes {
         display: grid;
         grid-template-columns:repeat(2, 1fr);
-        background-color: silver;
+        background-color: #F2F2F2;
         gap: 10px;
         align-items: center;
     }
