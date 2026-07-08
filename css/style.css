@@ -75,25 +75,80 @@ body{
     .contenedor-botones button:hover{
         color: gold;
     }
-    
+     /* el botón de like se encuentra dentro de la tarjeta de imagen, para que al dar click en el corazón se pueda dar like a la prenda */
     .contenedor-imagenes {
         display: grid;
-        grid-template-columns:repeat(2, 1fr);
-        background-color: #F2F2F2;
-        gap: 10px;
-        align-items: center;
+        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+        gap: 20px;
+        padding: 20px;
     }
-    .contenedor-imagenes div{
-        width: 40vw;
-        height:60vw;
-        border-radius: 20%;
-        object-fit: cover;
+
+    /* 1. Contenedor relativo */
+    .tarjeta-imagen {
+        position: relative;
+        border-radius: 10px;
         overflow: hidden;
-        padding: auto;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
-    .contenedor-imagenes img{
+
+    .tarjeta-imagen img {
         width: 100%;
+        height: 280px;
+        object-fit: cover;
+        display: block;
     }
+
+    /* 2. Ocultamos el checkbox real */
+    .check-like {
+        display: none;
+    }
+
+    /* 3. Estilo base del botón corazón (<label>) */
+    .btn-heart {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.3); /* Fondo oscuro semitransparente */
+        color: #ffffff;
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+  
+        /* Transparencia inicial */
+        opacity: 0.4;
+        transition: all 0.3s ease;
+        user-select: none;
+    }
+
+    /* Insertamos el corazón delineado por defecto */
+    .btn-heart::before {
+        content: "♡"; 
+    }
+
+    /* 4. HOVER: Transparencia completa al pasar el cursor */
+    .btn-heart:hover {
+        opacity: 1;
+        transform: scale(1.1);
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    /* 5. CLICK / CHECKED: Cuando el checkbox está seleccionado */
+    .check-like:checked + .btn-heart {
+        opacity: 1;
+        color: #121111; /* Color negro de "like" */
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Cambiamos el icono a corazón relleno cuando está en estado checked */
+    .check-like:checked + .btn-heart::before {
+        content: "♥";
+    }
+    
     .barra-fija {
         position: fixed;
         bottom: 0.5rem;           /* Queda pegada abajo. Cambia a top: 0 si la quieres arriba */
