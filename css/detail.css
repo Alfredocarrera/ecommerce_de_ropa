@@ -208,6 +208,7 @@
         gap: 15px; /* Espacio entre cada botón */
         margin-top: 5px;
         align-items: center;
+        margin-bottom: 80px;
     }
   
         /* 2. Estilo base para los botones de color (redondos) */
@@ -298,7 +299,6 @@
     /* 1. Contenedor de la barra fija en la parte inferior */
     .barra-fija {
         position: fixed;     /* Lo saca del flujo normal y lo fija en la pantalla */
-        top: 0;
         bottom: 0;           /* Lo pega al borde inferior */
         left: 0;             /* Alinea desde la izquierda */
         width: 100%;         /* Ocupa todo el ancho de la pantalla */
@@ -350,59 +350,688 @@
 }
 
 @media (min-width: 600px) and (max-width: 1024px){
-     /* Ocultar checkbox de forma transparente */
-    .checkbox-menu {
+   /* Contenedor principal centrado en pantalla */
+    .contenedor-imagenes {
+        max-width: 500px;
+        margin: 20px auto;
+        padding: 16px;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /*TARJETA DE IMAGEN Y CORAZÓN */
+
+    .tarjeta-imagen {
+        position: relative; /* Marco para ubicar el corazón dentro */
+        width: 100%;
+        border-radius: 12px;
+        overflow: hidden; /* Mantiene esquinas redondeadas */
+    }
+
+    .tarjeta-imagen img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+    }
+
+    /* Ocultar el checkbox de forma transparente */
+    .check-like {
         position: absolute;
         opacity: 0;
         pointer-events: none;
     }
 
-    /* Ocultar botón hamburguesa en pantallas grandes */
-    .menu-toggle {
+    /* Botón del corazón (Label) */
+    .btn-heart {
+        position: absolute;
+        top: 24px;
+        right: 12px;
+        z-index: 10;
+  
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.3) ; /* Fondo inicial transparente */
+  
+        display: flex;
+        align-items: center;
+        justify-content: center;
+  
+        cursor: pointer;
+        transition: all 0.25s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Dibujamos el icono del corazón en CSS puro usando pseudo-elemento ::before */
+    .btn-heart::before {
+        content: "♥"; /* Símbolo de corazón */
+        font-size: 20px;
+        color: #888888; /* Color gris inicial */
+        transition: all 0.25s ease;
+    }
+
+    /* 1. HOVER: Al pasar el cursor encima */
+    .btn-heart:hover {
+        background-color: #222222; /* Fondo oscuro */
+        transform: scale(1.1);
+    }
+
+    .btn-heart:hover::before {
+        color: #ffffff; /* Corazón blanco */
+    }
+
+    /* 2. CHECKED: Cuando el usuario DA CLIC y activa el me gusta */
+    .check-like:checked + .btn-heart {
+        background-color: #222222; /* Se queda oscuro */
+    }
+
+    .check-like:checked + .btn-heart::before {
+        color: #f2f2f2; /* Corazón rojo (o pon #ffffff si prefieres blanco) */
+        transform: scale(1.15);
+    }
+
+    
+    /*INFORMACIÓN Y BOTONES */
+
+    .contenedor-info{
+        max-width: 100%;
+        padding: 50px;
+        border-radius: 10px;
+    }
+    /*el menu permanece oculto*/
+    .toggle-checkbox{
         display: none;
     }
 
-    /* Barra fija horizontal estándar arriba */
-    .barra-fija {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
+    .texto-descripcion{
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        margin-bottom: 10px;
+        color: #292526;
+        line-height: 1.5; 
+    }
+
+    .boton-leer-mas{
+        display: inline-block;
+        color: #292526;
+        cursor: pointer;
+        user-select: none;
+    }
+    
+    .boton-leer-mas::after{
+        content: "Ver mas";
+    }
+
+    .toggle-checkbox:checked + .texto-descripcion{
+        -webkit-line-clamp: unset;
+        line-clamp: unset;
+        overflow: visible;
+    }
+    .toggle-checkbox:checked ~.boton-leer-mas::after{
+        content: "Ver menos";
+    }
+
+        /* 1. Contenedor principal: Centra la sección en la página */
+    .contenedor.botones {
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #292526; 
-        padding: 12px 0;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
+        padding: 10px;
+    }
+  
+        /* 2. Alinea los botones en fila y define el espacio entre ellos */
+    .botones-detalle {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px; /* Espacio uniforme entre los botones */
+    }
+  
+        /* 3. Estilos base y tamaño de todos los botones */
+    .btn-menos,
+    .btn-valor,
+    .btn-suma {
+        width: 40px;          /* Ancho del botón */
+        height: 40px;         /* Alto del botón */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 8px;   /* Esquinas redondeadas */
+        background-color: #ffffff;
+        cursor: pointer;
+        padding: 0;
+        transition: all 0.2s ease;
+    }
+  
+        /* 4. Estilo específico para el botón del número/valor */
+    .btn-valor {
+        width: 50px;          /* Si deseas que el contador sea un poco más ancho */
+        cursor: default;      /* Quita el puntero de mano ya que solo muestra el valor */
+        border-color: #e0e0e0;
+    }
+  
+    .valor {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #333333;
+    }
+  
+        /* 5. Control de tamaño y ajuste para las imágenes/íconos internos */
+    .icono_btn {
+        width: 18px;          /* Tamaño del ícono dentro del botón */
+        height: 18px;
+        object-fit: contain;  /* Evita que la imagen se deforme o distorsione */
+        pointer-events: none; /* Previene interferencias al hacer clic */
+    }
+  
+        /* 6. Efecto Hover para los botones de acción (+ y -) */
+    .btn-menos:hover,
+    .btn-suma:hover {
+        background-color: #f5f5f5;
+        border-color: #999999;
+    }
+  
+    .btn-menos:active,
+    .btn-suma:active {
+        background-color: #e0e0e0;
+        transform: scale(0.96);
     }
 
+     /* 1. Contenedor para alinear los botones de colores en una sola fila */
+    .contenedor-colorRopa {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 15px; /* Espacio entre cada botón */
+        margin-top: 5px;
+        align-items: center;
+        margin-bottom: 80px;
+    }
+  
+        /* 2. Estilo base para los botones de color (redondos) */
+    .btn-color {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%; /* Hace que los botones sean totalmente redondos */
+        border: 2px solid transparent;
+        cursor: pointer;
+        outline: none;
+        transition: all 0.25s ease; /* Hace las animaciones suaves */
+    }
+  
+        /* 3. Colores individuales para cada botón según su posición */
+    .btn-color:nth-child(1) {
+        background-color: #e74c3c; /* Rojo */
+    }
+  
+    .btn-color:nth-child(2) {
+        background-color: #3498db; /* Azul */
+    }
+  
+    .btn-color:nth-child(3) {
+        background-color: #2ecc71; /* Verde */
+    }
+  
+    .btn-color:nth-child(4) {
+        background-color: #f1c40f; /* Amarillo */
+    }
+  
+        /* 4. Efecto al pasar el cursor (Hover): resalta el color y crece levemente */
+    .btn-color:hover {
+        transform: scale(1.12);
+        filter: brightness(1.15); /* Aumenta el brillo */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  
+        /* 5. Efecto MIENTRAS mantienes el clic presionado: cambia a color negro */
+    .btn-color:active {
+        background-color: #000000 !important;
+        transform: scale(0.95);
+    }
+  
+        /* 6. Efecto DESPUÉS de hacer clic (Seleccionado / Focus): resalta el borde con su color correspondiente */
+    .btn-color:nth-child(1):focus {
+        border-color: #e74c3c;
+        box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.4);
+    }
+  
+    .btn-color:nth-child(2):focus {
+        border-color: #3498db;
+        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.4);
+    }
+  
+    .btn-color:nth-child(3):focus {
+        border-color: #2ecc71;
+        box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.4);
+    }
+  
+    .btn-color:nth-child(4):focus {
+        border-color: #f1c40f;
+        box-shadow: 0 0 0 3px rgba(241, 196, 15, 0.4);
+    }
+
+    .contenedor-medidasRopa {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+      
+    .btn-blancos {
+        padding: 8px 16px;
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 9px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.2s ease;
+    }
+      
+    .btn-blancos:hover {
+        background-color: #292526;
+        color: #f2f2f2f2;
+    }
+
+    /* 1. Contenedor de la barra fija en la parte inferior */
+    .barra-fija {
+        position: fixed;     /* Lo saca del flujo normal y lo fija en la pantalla */
+        bottom: 0;           /* Lo pega al borde inferior */
+        left: 0;             /* Alinea desde la izquierda */
+        width: 100%;         /* Ocupa todo el ancho de la pantalla */
+        background-color: #ffffff; /* Fondo para que el texto de la página no se traslape */
+        padding: 12px 20px;
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1); /* Sombra superior para darle relieve */
+        z-index: 1000;       /* Asegura que quede por encima de otros elementos */
+        display: flex;
+        justify-content: center; /* Centra el botón horizontalmente */
+        align-items: center;
+    }
+  
+        /* 2. Estilo del botón interno */
     .btn-barra {
         display: flex;
         align-items: center;
-        gap: 8px;
-        background-color: #111111;
-        color: #ffffff;
+        justify-content: center;
+        gap: 10px;           /* Espacio entre el icono y el texto */
+        width: 100%;
+        max-width: 400px;    /* Ancho máximo en pantallas grandes */
+        padding: 14px 24px;
+        background-color: #000000; /* Color de fondo del botón */
+        color: #ffffff;      /* Color del texto */
         border: none;
-        border-radius: 20px;
-        padding: 10px 18px;
-        font-weight: 600;
+        border-radius: 8px;  /* Bordes ligeramente redondeados */
+        font-size: 1rem;
+        font-weight: bold;
         cursor: pointer;
-        transition: background-color 0.2s ease;
+        transition: background-color 0.2s ease, transform 0.1s ease;
     }
-
+  
+        /* 3. Tamaño del icono dentro del botón */
+    .btn-barra img {
+        width: 20px;
+        height: 20px;
+        filter: invert(1);   /* Cambia el icono a color blanco si el SVG es originalmente negro */
+    }
+  
+        /* 4. Efectos al pasar el cursor y al hacer clic */
     .btn-barra:hover {
         background-color: #333333;
     }
-
-    .btn-barra img {
-        width: 100%;
-        height: 10px;
-        display: block;
+  
+    .btn-barra:active {
+        transform: scale(0.98);
+    } 
+}
+@media (min-width:1024px){
+    /* Contenedor principal centrado en pantalla */
+    .contenedor-imagenes {
+        max-width: 500px;
+        margin: 20px auto;
+        padding: 16px;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
-    .texto {
-        font-size: 0.95rem;
-        white-space: nowrap;
-    }  
+    /*TARJETA DE IMAGEN Y CORAZÓN */
+
+    .tarjeta-imagen {
+        position: relative; /* Marco para ubicar el corazón dentro */
+        width: 100%;
+        border-radius: 12px;
+        overflow: hidden; /* Mantiene esquinas redondeadas */
+    }
+
+    .tarjeta-imagen img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+    }
+
+    /* Ocultar el checkbox de forma transparente */
+    .check-like {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    /* Botón del corazón (Label) */
+    .btn-heart {
+        position: absolute;
+        top: 24px;
+        right: 12px;
+        z-index: 10;
+  
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.3) ; /* Fondo inicial transparente */
+  
+        display: flex;
+        align-items: center;
+        justify-content: center;
+  
+        cursor: pointer;
+        transition: all 0.25s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Dibujamos el icono del corazón en CSS puro usando pseudo-elemento ::before */
+    .btn-heart::before {
+        content: "♥"; /* Símbolo de corazón */
+        font-size: 20px;
+        color: #888888; /* Color gris inicial */
+        transition: all 0.25s ease;
+    }
+
+    /* 1. HOVER: Al pasar el cursor encima */
+    .btn-heart:hover {
+        background-color: #222222; /* Fondo oscuro */
+        transform: scale(1.1);
+    }
+
+    .btn-heart:hover::before {
+        color: #ffffff; /* Corazón blanco */
+    }
+
+    /* 2. CHECKED: Cuando el usuario DA CLIC y activa el me gusta */
+    .check-like:checked + .btn-heart {
+        background-color: #222222; /* Se queda oscuro */
+    }
+
+    .check-like:checked + .btn-heart::before {
+        color: #f2f2f2; /* Corazón rojo (o pon #ffffff si prefieres blanco) */
+        transform: scale(1.15);
+    }
+
+    
+    /*INFORMACIÓN Y BOTONES */
+
+    .contenedor-info{
+        max-width: 100%;
+        padding: 50px;
+        border-radius: 10px;
+    }
+    /*el menu permanece oculto*/
+    .toggle-checkbox{
+        display: none;
+    }
+
+    .texto-descripcion{
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        margin-bottom: 10px;
+        color: #292526;
+        line-height: 1.5; 
+    }
+
+    .boton-leer-mas{
+        display: inline-block;
+        color: #292526;
+        cursor: pointer;
+        user-select: none;
+    }
+    
+    .boton-leer-mas::after{
+        content: "Ver mas";
+    }
+
+    .toggle-checkbox:checked + .texto-descripcion{
+        -webkit-line-clamp: unset;
+        line-clamp: unset;
+        overflow: visible;
+    }
+    .toggle-checkbox:checked ~ .boton-leer-mas::after{
+        content: "Ver menos";
+    }
+
+        /* 1. Contenedor principal: Centra la sección en la página */
+    .contenedor.botones {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+  
+        /* 2. Alinea los botones en fila y define el espacio entre ellos */
+    .botones-detalle {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px; /* Espacio uniforme entre los botones */
+    }
+  
+        /* 3. Estilos base y tamaño de todos los botones */
+    .btn-menos,
+    .btn-valor,
+    .btn-suma {
+        width: 40px;          /* Ancho del botón */
+        height: 40px;         /* Alto del botón */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 8px;   /* Esquinas redondeadas */
+        background-color: #ffffff;
+        cursor: pointer;
+        padding: 0;
+        transition: all 0.2s ease;
+    }
+  
+        /* 4. Estilo específico para el botón del número/valor */
+    .btn-valor {
+        width: 50px;          /* Si deseas que el contador sea un poco más ancho */
+        cursor: default;      /* Quita el puntero de mano ya que solo muestra el valor */
+        border-color: #e0e0e0;
+    }
+  
+    .valor {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #333333;
+    }
+  
+        /* 5. Control de tamaño y ajuste para las imágenes/íconos internos */
+    .icono_btn {
+        width: 18px;          /* Tamaño del ícono dentro del botón */
+        height: 18px;
+        object-fit: contain;  /* Evita que la imagen se deforme o distorsione */
+        pointer-events: none; /* Previene interferencias al hacer clic */
+    }
+  
+        /* 6. Efecto Hover para los botones de acción (+ y -) */
+    .btn-menos:hover,
+    .btn-suma:hover {
+        background-color: #f5f5f5;
+        border-color: #999999;
+    }
+  
+    .btn-menos:active,
+    .btn-suma:active {
+        background-color: #e0e0e0;
+        transform: scale(0.96);
+    }
+
+     /* 1. Contenedor para alinear los botones de colores en una sola fila */
+    .contenedor-colorRopa {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 15px; /* Espacio entre cada botón */
+        margin-top: 5px;
+        align-items: center;
+        margin-bottom: 80px;
+    }
+  
+        /* 2. Estilo base para los botones de color (redondos) */
+    .btn-color {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%; /* Hace que los botones sean totalmente redondos */
+        border: 2px solid transparent;
+        cursor: pointer;
+        outline: none;
+        transition: all 0.25s ease; /* Hace las animaciones suaves */
+    }
+  
+        /* 3. Colores individuales para cada botón según su posición */
+    .btn-color:nth-child(1) {
+        background-color: #e74c3c; /* Rojo */
+    }
+  
+    .btn-color:nth-child(2) {
+        background-color: #3498db; /* Azul */
+    }
+  
+    .btn-color:nth-child(3) {
+        background-color: #2ecc71; /* Verde */
+    }
+  
+    .btn-color:nth-child(4) {
+        background-color: #f1c40f; /* Amarillo */
+    }
+  
+        /* 4. Efecto al pasar el cursor (Hover): resalta el color y crece levemente */
+    .btn-color:hover {
+        transform: scale(1.12);
+        filter: brightness(1.15); /* Aumenta el brillo */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  
+        /* 5. Efecto MIENTRAS mantienes el clic presionado: cambia a color negro */
+    .btn-color:active {
+        background-color: #000000 !important;
+        transform: scale(0.95);
+    }
+  
+        /* 6. Efecto DESPUÉS de hacer clic (Seleccionado / Focus): resalta el borde con su color correspondiente */
+    .btn-color:nth-child(1):focus {
+        border-color: #e74c3c;
+        box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.4);
+    }
+  
+    .btn-color:nth-child(2):focus {
+        border-color: #3498db;
+        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.4);
+    }
+  
+    .btn-color:nth-child(3):focus {
+        border-color: #2ecc71;
+        box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.4);
+    }
+  
+    .btn-color:nth-child(4):focus {
+        border-color: #f1c40f;
+        box-shadow: 0 0 0 3px rgba(241, 196, 15, 0.4);
+    }
+
+    .contenedor-medidasRopa {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+      
+    .btn-blancos {
+        padding: 8px 16px;
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 9px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.2s ease;
+    }
+      
+    .btn-blancos:hover {
+        background-color: #292526;
+        color: #f2f2f2f2;
+    }
+
+    /* 1. Contenedor de la barra fija en la parte inferior */
+    .barra-fija {
+        position: fixed;     /* Lo saca del flujo normal y lo fija en la pantalla */
+        bottom: 0;           /* Lo pega al borde inferior */
+        left: 0;             /* Alinea desde la izquierda */
+        width: 100%;         /* Ocupa todo el ancho de la pantalla */
+        background-color: #ffffff; /* Fondo para que el texto de la página no se traslape */
+        padding: 12px 20px;
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1); /* Sombra superior para darle relieve */
+        z-index: 1000;       /* Asegura que quede por encima de otros elementos */
+        display: flex;
+        justify-content: center; /* Centra el botón horizontalmente */
+        align-items: center;
+    }
+  
+        /* 2. Estilo del botón interno */
+    .btn-barra {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;           /* Espacio entre el icono y el texto */
+        width: 100%;
+        max-width: 400px;    /* Ancho máximo en pantallas grandes */
+        padding: 14px 24px;
+        background-color: #000000; /* Color de fondo del botón */
+        color: #ffffff;      /* Color del texto */
+        border: none;
+        border-radius: 8px;  /* Bordes ligeramente redondeados */
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+  
+        /* 3. Tamaño del icono dentro del botón */
+    .btn-barra img {
+        width: 20px;
+        height: 20px;
+        filter: invert(1);   /* Cambia el icono a color blanco si el SVG es originalmente negro */
+    }
+  
+        /* 4. Efectos al pasar el cursor y al hacer clic */
+    .btn-barra:hover {
+        background-color: #333333;
+    }
+  
+    .btn-barra:active {
+        transform: scale(0.98);
+    }
 }
