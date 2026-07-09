@@ -1,0 +1,231 @@
+
+/* Reseteo básico y tipografía */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: #f8f9fa;
+  color: #1a1a1a;
+  display: flex;
+  justify-content: center;
+}
+
+/* Contenedor principal con vista tipo móvil */
+.checkout-container {
+  width: 100%;
+  max-width: 414px;
+  background-color: #ffffff;
+  padding: 20px;
+  /* Margen inferior para que la barra fija NO oculte los totales al hacer scroll */
+  padding-bottom: 100px; 
+  min-height: 100vh;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #e5e5e5;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* Items de Productos */
+.product-item {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 24px;
+}
+
+.product-img {
+  width: 75px;
+  height: 75px;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.product-info {
+  flex: 1;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-header h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.more-options {
+  color: #888;
+  cursor: pointer;
+}
+
+.product-subtitle {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+
+.product-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.price {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Controles de Cantidad (+ / -) */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.qty-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid #e0e0e0;
+  background-color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.qty-number {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Sección de Envío y Pago */
+.shipping-section {
+  margin-top: 20px;
+  margin-bottom: 24px;
+}
+
+.shipping-section h2 {
+  font-size: 1rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.payment-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f5f5f7;
+  padding: 14px 16px;
+  border-radius: 12px;
+}
+
+.card-details {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.visa-badge {
+  background-color: #2557d6;
+  color: white;
+  font-size: 0.65rem;
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-style: italic;
+}
+
+.card-number {
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.dropdown-arrow {
+  color: #666;
+  font-size: 0.8rem;
+}
+
+/* Desglose de Totales */
+.summary-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.summary-row strong {
+  color: #1a1a1a;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #f0f0f0;
+  margin: 10px 0;
+}
+
+.subtotal {
+  font-size: 1rem;
+  color: #1a1a1a;
+}
+
+/* Barra Fija Inferior */
+.barra-fija {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  padding: 16px 20px;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+}
+
+.pay-btn {
+  width: 100%;
+  max-width: 374px; /* Alineado al contenedor central */
+  background-color: #222222;
+  color: #ffffff;
+  border: none;
+  padding: 16px;
+  border-radius: 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.pay-btn:hover {
+  background-color: #000000;
+}
