@@ -103,6 +103,7 @@
     .texto-descripcion{
         display: -webkit-box;
         -webkit-line-clamp: 3;
+        line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
         transition: all 0.3s ease;
@@ -124,6 +125,7 @@
 
     .toggle-checkbox:checked + .texto-descripcion{
         -webkit-line-clamp: unset;
+        line-clamp: unset;
         overflow: visible;
     }
     .toggle-checkbox:checked ~ .boton-leer-mas::after{
