@@ -206,7 +206,7 @@
         justify-content: center;
         align-items: center;
         gap: 15px; /* Espacio entre cada botón */
-        margin-top: 15px;
+        margin-top: 5px;
         align-items: center;
     }
   
@@ -295,7 +295,55 @@
         color: #f2f2f2f2;
     }
 
-        /* Menú flotante horizontal que se despliega al lado del botón hamburguesa */
+    /* 1. Contenedor de la barra fija en la parte inferior */
+    .barra-fija {
+        position: fixed;     /* Lo saca del flujo normal y lo fija en la pantalla */
+        bottom: 0;           /* Lo pega al borde inferior */
+        left: 0;             /* Alinea desde la izquierda */
+        width: 100%;         /* Ocupa todo el ancho de la pantalla */
+        background-color: #ffffff; /* Fondo para que el texto de la página no se traslape */
+        padding: 12px 20px;
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1); /* Sombra superior para darle relieve */
+        z-index: 1000;       /* Asegura que quede por encima de otros elementos */
+        display: flex;
+        justify-content: center; /* Centra el botón horizontalmente */
+        align-items: center;
+    }
+  
+        /* 2. Estilo del botón interno */
+    .btn-barra {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;           /* Espacio entre el icono y el texto */
+        width: 100%;
+        max-width: 400px;    /* Ancho máximo en pantallas grandes */
+        padding: 14px 24px;
+        background-color: #000000; /* Color de fondo del botón */
+        color: #ffffff;      /* Color del texto */
+        border: none;
+        border-radius: 8px;  /* Bordes ligeramente redondeados */
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+  
+        /* 3. Tamaño del icono dentro del botón */
+    .btn-barra img {
+        width: 20px;
+        height: 20px;
+        filter: invert(1);   /* Cambia el icono a color blanco si el SVG es originalmente negro */
+    }
+  
+        /* 4. Efectos al pasar el cursor y al hacer clic */
+    .btn-barra:hover {
+        background-color: #333333;
+    }
+  
+    .btn-barra:active {
+        transform: scale(0.98);
+    }
    
 
 }
