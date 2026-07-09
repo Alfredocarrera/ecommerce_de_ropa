@@ -298,6 +298,7 @@
     /* 1. Contenedor de la barra fija en la parte inferior */
     .barra-fija {
         position: fixed;     /* Lo saca del flujo normal y lo fija en la pantalla */
+        top: 0;
         bottom: 0;           /* Lo pega al borde inferior */
         left: 0;             /* Alinea desde la izquierda */
         width: 100%;         /* Ocupa todo el ancho de la pantalla */
