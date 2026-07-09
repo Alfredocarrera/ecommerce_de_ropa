@@ -9,9 +9,7 @@
         max-width: 500px;
         margin: 20px auto;
         padding: 16px;
-        background-color: #f2f2f2;
         border-radius: 16px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -89,154 +87,215 @@
         transform: scale(1.15);
     }
 
-
+    
     /*INFORMACIÓN Y BOTONES */
 
-    .producto-info {
-        text-align: center;
-        margin: 15px 0;
-        width: 100%;
+    .contenedor-info{
+        max-width: 100%;
+        padding: 50px;
+        border-radius: 10px;
     }
-
-    .producto-info h2 {
-        margin: 0 0 8px 0;
-        font-size: 1.25rem;
-        color: #333333;
-    }
-
-    .producto-info p {
-        margin: 0 0 8px 0;
-        color: #666666;
-        font-size: 0.9rem;
-    }
-
-    .btn-leerMas {
-        background: transparent;
-        border: none;
-        color: #007bff;
-        font-weight: 600;
-        cursor: pointer;
-    }
-
-       /* Ocultar el checkbox de control */
-    .check-readmore {
-        position: absolute;
-        opacity: 0;
-        pointer-events: none;
-    }
-
-        /* Ocultar el texto largo por defecto */
-    .texto-extra {
+    /*el menu permanece oculto*/
+    .toggle-checkbox{
         display: none;
     }
 
-        /* Estilo para el botón (Label) */
-    .btn-leerMas {
+    .texto-descripcion{
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        margin-bottom: 10px;
+        color: #292526;
+        line-height: 1.5; 
+    }
+
+    .boton-leer-mas{
         display: inline-block;
-        color: #007bff;
-        font-weight: 600;
-        font-size: 0.9rem;
+        color: #292526;
         cursor: pointer;
-        margin-top: 6px;
+        user-select: none;
+    }
+    
+    .boton-leer-mas::after{
+        content: "Ver mas";
     }
 
-    .btn-leerMas:hover {
-        text-decoration: underline;
+    .toggle-checkbox:checked + .texto-descripcion{
+        -webkit-line-clamp: unset;
+        overflow: visible;
+    }
+    .toggle-checkbox:checked ~ .boton-leer-mas::after{
+        content: "Ver menos";
     }
 
-        /* Texto del botón cuando está colapsado */
-    .btn-leerMas::before {
-        content: "Read More..";
+        /* 1. Contenedor principal: Centra la sección en la página */
+    .contenedor.botones {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
     }
-
-        /*ESTADO ACTIVADO (:checked)*/
-
-        /* 1. Muestra el texto escondido */
-    .check-readmore:checked ~ .parrafo-producto .texto-extra {
-        display: inline;
-    }
-
-        /* 2. Cambia automáticamente el texto del botón a "Read Less" */
-    .check-readmore:checked ~ .btn-leerMas::before {
-        content: "Read Less";
-    }
-
-    /* Barra de incremento (- 1 +) */
+  
+        /* 2. Alinea los botones en fila y define el espacio entre ellos */
     .botones-detalle {
         display: flex;
+        flex-direction: row;
         align-items: center;
-        gap: 12px;
-        background-color: #f2f2f2;
-        padding: 6px 12px;
-        border-radius: 20px;
+        gap: 8px; /* Espacio uniforme entre los botones */
     }
-
-    .btn-menos, .btn-suma, .btn-valor {
-        background: transparent;
-        border: none;
+  
+        /* 3. Estilos base y tamaño de todos los botones */
+    .btn-menos,
+    .btn-valor,
+    .btn-suma {
+        width: 40px;          /* Ancho del botón */
+        height: 40px;         /* Alto del botón */
         display: flex;
-        align-items: center;
         justify-content: center;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 8px;   /* Esquinas redondeadas */
+        background-color: #ffffff;
         cursor: pointer;
+        padding: 0;
+        transition: all 0.2s ease;
     }
-
-    .icono_btn {
-        width: 16px;
-        height: 16px;
+  
+        /* 4. Estilo específico para el botón del número/valor */
+    .btn-valor {
+        width: 50px;          /* Si deseas que el contador sea un poco más ancho */
+        cursor: default;      /* Quita el puntero de mano ya que solo muestra el valor */
+        border-color: #e0e0e0;
     }
-
+  
     .valor {
+        font-size: 1.1rem;
         font-weight: bold;
-        font-size: 1rem;
-        padding: 0 8px;
+        color: #333333;
+    }
+  
+        /* 5. Control de tamaño y ajuste para las imágenes/íconos internos */
+    .icono_btn {
+        width: 18px;          /* Tamaño del ícono dentro del botón */
+        height: 18px;
+        object-fit: contain;  /* Evita que la imagen se deforme o distorsione */
+        pointer-events: none; /* Previene interferencias al hacer clic */
+    }
+  
+        /* 6. Efecto Hover para los botones de acción (+ y -) */
+    .btn-menos:hover,
+    .btn-suma:hover {
+        background-color: #f5f5f5;
+        border-color: #999999;
+    }
+  
+    .btn-menos:active,
+    .btn-suma:active {
+        background-color: #e0e0e0;
+        transform: scale(0.96);
     }
 
-    /* Botón hamburguesa fijo en la esquina inferior izquierda */
-    .menu-toggle {
+     /* 1. Contenedor para alinear los botones de colores en una sola fila */
+    .contenedor-colorRopa {
         display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 15px; /* Espacio entre cada botón */
+        margin-top: 15px;
+        align-items: center;
+    }
+  
+        /* 2. Estilo base para los botones de color (redondos) */
+    .btn-color {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%; /* Hace que los botones sean totalmente redondos */
+        border: 2px solid transparent;
+        cursor: pointer;
+        outline: none;
+        transition: all 0.25s ease; /* Hace las animaciones suaves */
+    }
+  
+        /* 3. Colores individuales para cada botón según su posición */
+    .btn-color:nth-child(1) {
+        background-color: #e74c3c; /* Rojo */
+    }
+  
+    .btn-color:nth-child(2) {
+        background-color: #3498db; /* Azul */
+    }
+  
+    .btn-color:nth-child(3) {
+        background-color: #2ecc71; /* Verde */
+    }
+  
+    .btn-color:nth-child(4) {
+        background-color: #f1c40f; /* Amarillo */
+    }
+  
+        /* 4. Efecto al pasar el cursor (Hover): resalta el color y crece levemente */
+    .btn-color:hover {
+        transform: scale(1.12);
+        filter: brightness(1.15); /* Aumenta el brillo */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  
+        /* 5. Efecto MIENTRAS mantienes el clic presionado: cambia a color negro */
+    .btn-color:active {
+        background-color: #000000 !important;
+        transform: scale(0.95);
+    }
+  
+        /* 6. Efecto DESPUÉS de hacer clic (Seleccionado / Focus): resalta el borde con su color correspondiente */
+    .btn-color:nth-child(1):focus {
+        border-color: #e74c3c;
+        box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.4);
+    }
+  
+    .btn-color:nth-child(2):focus {
+        border-color: #3498db;
+        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.4);
+    }
+  
+    .btn-color:nth-child(3):focus {
+        border-color: #2ecc71;
+        box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.4);
+    }
+  
+    .btn-color:nth-child(4):focus {
+        border-color: #f1c40f;
+        box-shadow: 0 0 0 3px rgba(241, 196, 15, 0.4);
+    }
+
+    .contenedor-medidasRopa {
+        display: flex;
+        flex-direction: row;
         align-items: center;
         justify-content: center;
-        
-        position: fixed;
-        bottom: 20px;
-        left: 20px;
-        z-index: 9999;
-        
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        background-color: #111111;
-        color: #ffffff;
-        font-size: 22px;
+        gap: 10px;
+    }
+      
+    .btn-blancos {
+        padding: 8px 16px;
+        background-color: #ffffff;
+        border: 1px solid #ccc;
+        border-radius: 9px;
         cursor: pointer;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        font-weight: bold;
+        transition: background-color 0.2s ease;
+    }
+      
+    .btn-blancos:hover {
+        background-color: #292526;
+        color: #f2f2f2f2;
     }
 
         /* Menú flotante horizontal que se despliega al lado del botón hamburguesa */
-    .barra-fija {
-        position: fixed;
-        top: auto;
-        bottom: 20px;
-        left: 78px;
-        right: 20px;
-        width: auto;
-        max-width: calc(100% - 100px);
-        z-index: 9998;
-    
-        display: none; /* Oculto por defecto */
-        justify-content: center;
-        align-items: center;
-    
-        padding: 6px 12px;
-        border-radius: 25px;
-        background-color: #ffffff;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-    }
+   
 
-        /* Mostrar la barra al activar el checkbox */
-    .checkbox-menu:checked ~ .barra-fija {
-        display: flex;
-    } 
 }
 
 @media (min-width: 600px) and (max-width: 1024px){
