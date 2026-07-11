@@ -20,7 +20,7 @@ body{
 
 
 
-@media(max-width: 600px) {
+@media(max-width: 450px) {
     .contenedor-perfil {
         display: flex;
         justify-content: space-around;
@@ -140,7 +140,7 @@ body{
          /* el botón de like se encuentra dentro de la tarjeta de imagen, para que al dar click en el corazón se pueda dar like a la prenda */
     .contenedor-imagenes {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 20px;
         padding: 20px;
     }
@@ -313,7 +313,7 @@ body{
     
 }
 
-@media (min-width: 600px) and (max-width: 1024px) {
+@media (min-width: 450px) and (max-width: 1024px) {
    
      .contenedor-perfil {
         display: flex;
@@ -336,7 +336,7 @@ body{
         display: flex;
         justify-content:space-around;
         gap: 20px;
-        
+        margin-left: 1rem;
     }
 
     .contenedor-busqueda button{
@@ -347,6 +347,7 @@ body{
         color: #F2F2F2;
         cursor: pointer;
         border-radius: 10px;
+        margin-right: 1rem;
     }
 
     .contenedor-busqueda input{
