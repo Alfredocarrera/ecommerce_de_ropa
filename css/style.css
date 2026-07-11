@@ -23,6 +23,7 @@ body{
 @media(max-width: 600px) {
     .contenedor-perfil {
         display: flex;
+        justify-content: space-around;
         align-items: center;
         gap: 20px;
 
@@ -32,24 +33,32 @@ body{
         height: 100px;          /*controlo el alto de la imagen*/   
         border-radius: 50%;     /*controla lo redondeado de la imagen*/
         object-fit: cover;      /*evita que se deforme la imagen*/
-        display: block;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
     }
     
     .contenedor-busqueda{
         display: flex;
-        flex-direction: row;
-        justify-content:center;
-        gap: 20px;
-        align-items:center;
+        flex-wrap: wrap; /*permite que el boton baje si no hay espacio*/
+        gap: 20px; /*espacio horizontal y vertical entre elementos */
+        width: 100%; 
+        max-width: 500px; /*ancho maximo para que no se expando al maximo en pantalla movil*/
+        margin: 0 auto; /*centra el contenedor en la pagina */
     }
     .contenedor-busqueda button{
         padding: 10px 30px;
         border: 2px solid #292526;
+        border-radius: 10px;
         background-color: #292526;
         color: #F2F2F2;
         cursor: pointer;
     }
     .contenedor-busqueda input{
+        flex: 1;    /*ocupa el espacio disponible */
+        min-width: 200px; /*ancho minimo que tiene antes de saltar de linea */
+        max-width: 550px;
+        align-items: center;
         padding: 10px 20px;
         font-size: 16px;
         border: 2px solid #292526;
@@ -308,10 +317,9 @@ body{
    
      .contenedor-perfil {
         display: flex;
-        align-items: center;
+        justify-content: space-around;
+        align-items:center;
         gap: 20px;
-        flex-direction: row;
-        justify-content: center;
         
     }
     .img_perfil {
@@ -319,20 +327,22 @@ body{
         height: 100px;          /*controlo el alto de la imagen*/   
         border-radius: 50%;     /*controla lo redondeado de la imagen*/
         object-fit: cover;      /*evita que se deforme la imagen*/
-        display: block;
+        display: flex;
+        justify-content: space-around;
+        align-items:center;
     }
     
     .contenedor-busqueda{
         display: flex;
-        flex-direction: row;
-        justify-content:center;
+        justify-content:space-around;
         gap: 20px;
-        align-items:center;
+        
     }
 
     .contenedor-busqueda button{
         padding: 10px 30px;
         border: 2px solid #292526;
+        border-radius: 10px;
         background-color: #292526;
         color: #F2F2F2;
         cursor: pointer;
@@ -340,6 +350,9 @@ body{
     }
 
     .contenedor-busqueda input{
+        flex: 1;
+        width: 100%;
+        align-items: center;
         padding: 10px 20px;
         font-size: 16px;
         border: 2px solid #292526;
@@ -350,13 +363,19 @@ body{
         color:#787672;
         opacity: 0.7;
     }
-     /* Configuración del contenedor-botones  */
-    .contenedor-botones{
-        display: flex;
-        flex-direction: row;
-        justify-content:center;
-        gap: 20px;
-        align-items:center;
+    
+    
+    /* Configuración del contenedor-botones  */
+    .contenedor-botones {
+       width: 100%;
+       margin-left: calc(-50vw + 50%);
+    }
+
+    #base-botones{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        padding: 0 16px;
     }
          /* Configuración del botón */
     .btn-negro {
@@ -367,7 +386,7 @@ body{
         padding: 10px 18px;
         margin: 4px;
         /* Flexbox mantiene alineado el icono (img) y el texto (span) */
-        display: inline-flex;
+        /*display: inline-flex;*/
         align-items: center;
         gap: 8px;
         font-family: sans-serif;
@@ -518,7 +537,7 @@ body{
     .barra-fija {
         position: fixed;
         bottom: 0.5rem;           /* Queda pegada abajo. Cambia a top: 0 si la quieres arriba */
-        left: 10px;
+        left: 5vw;
         width: 90%;         /* Ocupa todo el ancho de la pantalla */
         height: 60px;
         background-color: #292526;
@@ -573,8 +592,7 @@ body{
         display: flex;
         align-items: center;
         gap: 20px;
-        flex-direction: row;
-        justify-content: center;
+        justify-content: space-around;
         
     }
     .img_perfil {
@@ -582,15 +600,15 @@ body{
         height: 100px;          /*controlo el alto de la imagen*/   
         border-radius: 50%;     /*controla lo redondeado de la imagen*/
         object-fit: cover;      /*evita que se deforme la imagen*/
-        display: block;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
     }
     
     .contenedor-busqueda{
         display: flex;
-        flex-direction: row;
-        justify-content:center;
+        justify-content:space-around;
         gap: 20px;
-        align-items:center;
     }
 
     .contenedor-busqueda button{
@@ -603,6 +621,9 @@ body{
     }
 
     .contenedor-busqueda input{
+        flex: 1;
+        width: 100%;
+        align-items: center;
         padding: 10px 20px;
         font-size: 16px;
         border: 2px solid #292526;
@@ -615,13 +636,17 @@ body{
     }
      /* Configuración del contenedor-botones  */
     .contenedor-botones{
-        display: flex;
-        flex-direction: row;
-        justify-content:center;
-        gap: 20px;
-        align-items:center;
+        width: 100%;
+        margin-left: calc(-50vw + 50%);
     }
-         /* Configuración del botón */
+    #base-botones{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+        padding: 0 16px;
+    }
+    
+    /* Configuración del botón */
     .btn-negro {
         background-color: #121111;
         color: #f2f2f2;
@@ -781,7 +806,7 @@ body{
     .barra-fija {
         position: fixed;
         bottom: 0.5rem;           /* Queda pegada abajo. Cambia a top: 0 si la quieres arriba */
-        left: 10px;
+        left: 5vw;
         width: 90%;         /* Ocupa todo el ancho de la pantalla */
         height: 60px;
         background-color: #292526;
