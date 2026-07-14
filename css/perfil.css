@@ -1,0 +1,564 @@
+
+ 
+  
+@media(max-width: 405px){ 
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+      
+    body {
+        background-color: #f2f2f2;
+        color: #121111;
+        padding: 12px; /* Reducido para dar más espacio útil */
+    }
+      
+      /* Contenedor principal */
+    .container {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        background: #f2f2f2;
+        padding: 8px 0; /* Menos padding horizontal para ganar espacio */
+    }
+      
+      /* Header */
+    .header {
+        display: flex;
+        justify-content: space-between; /* Alineación limpia en los bordes */
+        align-items: center;
+        margin-bottom: 16px;
+        gap: 10px;
+    }
+      
+    .header h1 {
+        font-size: 20px; /* Tamaño adaptado a móvil */
+        letter-spacing: 0.5px;
+        word-break: break-word;
+    }
+      
+    .btn-config {
+        padding: 6px 12px;
+        border: 1px solid #787676;
+        background: #f2f2f2;
+        cursor: pointer;
+        border-radius: 3px;
+        font-size: 12px;
+        white-space: nowrap; /* Evita que el texto del botón se rompa */
+    }
+      
+      /* Navegación por pestañas */
+    .nav-tabs {
+        display: flex;
+        justify-content: space-between;
+        gap: 6px;
+        margin-bottom: 20px;
+    }
+      
+    .tab {
+        flex: 1; /* Distribuye el espacio equitativamente */
+        text-align: center;
+        text-decoration: none;
+        color: #121111;
+        padding: 8px 4px;
+        border: 1px solid #787676;
+        background-color: #f2f2f2;
+        font-size: 13px;
+    }
+      
+    .tab.active {
+        background-color: #e5e5e5; /* Cambio leve para notar la pestaña activa */
+        font-weight: bold;
+    }
+      
+      /* Estructura principal: pasa de 2 columnas a 1 para móvil */
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+      
+      /* Placeholders de imágenes con cruz en X */
+    .image-placeholder {
+        background-color: #a3a1a2;
+        border: 1px solid #787676;
+        position: relative;
+        overflow: hidden;
+    }
+      
+    .image-placeholder::before,
+    .image-placeholder::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 142%;
+        height: 100%;
+        border-top: 1px solid #f2f2f2;
+    }
+      
+    .image-placeholder::before {
+        transform: rotate(45deg);
+        transform-origin: top left;
+    }
+      
+    .image-placeholder::after {
+        transform: rotate(-45deg);
+        transform-origin: top right;
+    }
+      
+      /* Bloques individuales */
+    .main-avatar {
+        height: 180px;
+        margin-bottom: 15px;
+    }
+      
+    .about-section h3 {
+        font-size: 14px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #787676;
+        padding-bottom: 5px;
+    }
+      
+    .secondary-img {
+        height: 120px;
+        margin-top: 10px;
+    }
+      
+    .user-name {
+        font-size: 22px;
+        border-bottom: 1px solid #787676;
+        padding-bottom: 8px;
+        margin-bottom: 15px;
+    }
+      
+    .info-section {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+      
+    .info-section h3 {
+        font-size: 14px;
+        margin-bottom: 10px;
+        letter-spacing: 0.5px;
+    }
+      
+    .info-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+        border-bottom: 1px solid #e0e0e0;
+        padding-bottom: 4px;
+        gap: 8px;
+    }
+      
+    .info-row .label {
+        font-size: 12px;
+        min-width: auto; /* Flexibilidad en móvil */
+    }
+      
+    .info-row .dots {
+        flex-grow: 1;
+    }
+      
+      /* Biografía */
+    .bio-box {
+        border: 1px solid #787676;
+        background-color: #f2f2f2;
+        padding: 12px;
+        font-size: 12px;
+        line-height: 1.4;
+        color: #121111;
+        margin-bottom: 20px;
+        border-radius: 2px;
+    }
+      
+      /* Grid de publicaciones */
+    .posts-section h3 {
+        font-size: 14px;
+        margin-bottom: 10px;
+    }
+      
+    .posts-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 fotos por fila funcionan bien */
+        gap: 10px;
+    }
+      
+    .post-card {
+        height: 100px;
+    }
+}
+
+@media (min-width: 450px) and (max-width: 1024px){
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+      
+    body {
+        background-color: #f2f2f2;
+        color: #121111;
+        padding: 20px;
+    }
+      
+      /* Contenedor principal */
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: #f2f2f2;
+        padding: 20px;
+    }
+      
+      /* Header */
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+      
+    .header h1 {
+        font-size: 24px;
+        letter-spacing: 1px;
+    }
+      
+    .btn-config {
+        padding: 6px 12px;
+        border: 1px solid #787676;
+        background: #f2f2f2;
+        cursor: pointer;
+        border-radius: 3px;
+        font-size: 13px;
+    }
+      
+      /* Navegación por pestañas */
+    .nav-tabs {
+        display: flex;
+        gap: 2px;
+        margin-bottom: 25px;
+    }
+      
+    .tab {
+        text-decoration: none;
+        color: #121111;
+        padding: 6px 16px;
+        border: 1px solid #787676;
+        background-color: #f2f2f2;
+        font-size: 14px;
+    }
+      
+    .tab.active {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+      
+      /* Estructura principal en 2 columnas */
+    .main-content {
+        display: grid;
+        grid-template-columns: 200px 1fr;
+        gap: 30px;
+    }
+      
+      /* Placeholders de imágenes con cruz en X */
+    .image-placeholder {
+        background-color: #a3a1a2;
+        border: 1px solid #787676;
+        position: relative;
+        overflow: hidden;
+    }
+      
+    .image-placeholder::before,
+    .image-placeholder::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-top: 1px solid #787676;
+    }
+      
+    .image-placeholder::before {
+        transform: rotate(45deg);
+        transform-origin: top left;
+        width: 142%; /* Ajuste geométrico para cubrir la diagonal */
+    }
+      
+    .image-placeholder::after {
+        transform: rotate(-45deg);
+        transform-origin: top right;
+        width: 142%;
+    }
+      
+      /* Columna Izquierda */
+    .main-avatar {
+        height: 200px;
+        margin-bottom: 25px;
+    }
+      
+    .about-section h3 {
+        font-size: 14px;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #787676;
+        padding-bottom: 5px;
+    }
+      
+    .secondary-img {
+        height: 150px;
+    }
+      
+      /* Columna Derecha */
+    .user-name {
+        font-size: 28px;
+        border-bottom: 1px solid #f2f2f2;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+      
+    .info-section {
+        margin-bottom: 20px;
+    }
+      
+    .info-section h3 {
+        font-size: 14px;
+        margin-bottom: 12px;
+        letter-spacing: 0.5px;
+    }
+      
+    .info-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 8px;
+        border-bottom: 1px solid #787676;
+        padding-bottom: 4px;
+    }
+      
+    .info-row .label {
+        font-size: 13px;
+        min-width: 130px;
+    }
+      
+    .info-row .dots {
+        flex-grow: 1;
+    }
+      
+      /* Cuestión de Biografía */
+    .bio-box {
+        border: 1px solid #787676;
+        background-color: #f2f2f2;
+        padding: 15px;
+        font-size: 12px;
+        line-height: 1.5;
+        color: #121111;
+        margin-bottom: 25px;
+        border-radius: 2px;
+    }
+      
+      /* Grid de Publicaciones */
+    .posts-section h3 {
+        font-size: 14px;
+        margin-bottom: 12px;
+    }
+      
+    .posts-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+      
+    .post-card {
+        height: 120px;
+    }  
+}
+
+@media (min-width: 1024px){
+  
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+  
+body {
+    background-color: #f2f2f2;
+    color: #121111;
+    padding: 20px;
+}
+  
+  /* Contenedor principal */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #f2f2f2;
+    padding: 20px;
+}
+  
+  /* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+  
+.header h1 {
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+  
+.btn-config {
+    padding: 6px 12px;
+    border: 1px solid #787676;
+    background: #f2f2f2;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 13px;
+}
+  
+  /* Navegación por pestañas */
+.nav-tabs {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 25px;
+}
+  
+.tab {
+    text-decoration: none;
+    color: #121111;
+    padding: 6px 16px;
+    border: 1px solid #787676;
+    background-color: #f2f2f2;
+    font-size: 14px;
+}
+  
+.tab.active {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+  
+  /* Estructura principal en 2 columnas */
+.main-content {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 30px;
+}
+  
+  /* Placeholders de imágenes con cruz en X */
+.image-placeholder {
+    background-color: #a3a1a2;
+    border: 1px solid #787676;
+    position: relative;
+    overflow: hidden;
+}
+  
+.image-placeholder::before,
+.image-placeholder::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-top: 1px solid #787676;
+}
+  
+.image-placeholder::before {
+    transform: rotate(45deg);
+    transform-origin: top left;
+    width: 142%; /* Ajuste geométrico para cubrir la diagonal */
+}
+  
+.image-placeholder::after {
+    transform: rotate(-45deg);
+    transform-origin: top right;
+    width: 142%;
+}
+  
+  /* Columna Izquierda */
+.main-avatar {
+    height: 200px;
+    margin-bottom: 25px;
+}
+  
+.about-section h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #787676;
+    padding-bottom: 5px;
+}
+  
+.secondary-img {
+    height: 150px;
+ }
+  
+  /* Columna Derecha */
+.user-name {
+    font-size: 28px;
+    border-bottom: 1px solid #f2f2f2;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+  
+.info-section {
+    margin-bottom: 20px;
+}
+  
+.info-section h3 {
+    font-size: 14px;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+  
+.info-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #787676;
+    padding-bottom: 4px;
+}
+  
+.info-row .label {
+    font-size: 13px;
+    min-width: 130px;
+}
+  
+.info-row .dots {
+    flex-grow: 1;
+}
+  
+  /* Cuestión de Biografía */
+.bio-box {
+    border: 1px solid #787676;
+    background-color: #f2f2f2;
+    padding: 15px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #121111;
+    margin-bottom: 25px;
+    border-radius: 2px;
+}
+  
+  /* Grid de Publicaciones */
+.posts-section h3 {
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+  
+.posts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+  
+.post-card {
+    height: 120px;
+}  
+}
