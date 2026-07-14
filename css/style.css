@@ -808,7 +808,6 @@ body{
         position: fixed;
         bottom: 0.5rem;           /* Queda pegada abajo. Cambia a top: 0 si la quieres arriba */
         left: 5vw;
-        width: 90%;         /* Ocupa todo el ancho de la pantalla */
         height: 60px;
         background-color: #292526;
         color: #F2F2F2;
